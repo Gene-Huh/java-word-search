@@ -8,9 +8,14 @@ public class GridTest {
 	private String filePath = "TestGrid";
 	
 	@Test
-	public void Grid_Loader() {
+	public void Grid_Loader_Test() {
 		Grid testGrid = new Grid(filePath);
 		Assert.assertEquals(8, testGrid.loadGrid().size());
 	}
 
+	@Test
+	public void Grid_Slicer_Test() {
+		Grid testGrid = new Grid(filePath);
+		Assert.assertEquals(84, testGrid.sliceGrid().size());
+	}
 }
