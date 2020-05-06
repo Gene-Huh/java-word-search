@@ -7,14 +7,16 @@ import FileIO.FileReader;
 import FileIO.IFileReader;
 
 public class Grid {
-	private ArrayList<String[]> grid;
+	private String[][] grid;
 	private ArrayList<String> sliceList;
 
 	public Grid(String filePath) {
 		IFileReader reader = new FileReader(filePath);
 		List<String> gridRaw = reader.read(filePath);
-		for (String rowRaw : gridRaw) {
-			grid.add(rowRaw.split(" "));
+		
+		grid = new String[gridRaw.size()][gridRaw.size()];
+		for (int i=0;i<grid.length; i++) {
+			grid[i]=gridRaw.get(i).split(" ");
 		}
 	}
 	
@@ -25,7 +27,7 @@ public class Grid {
 		return sliceList;
 	}
 	
-	public List<String[]> getGrid() {		
+	public String[][] getGrid() {		
 		return grid;
 	}
 
@@ -33,12 +35,12 @@ public class Grid {
 	private void xySlicer() {
 	
 		StringBuilder xString = new StringBuilder();
-		for (int i=0; i<grid.size(); i++) {
-			xString.append(grid.get(i));
+		for (int i=0; i<grid.length; i++) {
+			xString.append(grid[i]);
 			
 			StringBuilder yString = new StringBuilder();
-			for (int j=0; i< grid.get(i).length; j++) {
-				yString.append(grid.get(i)[j]);
+			for (int j=0; i< grid[i].length; j++) {
+				yString.append(grid[i][j]);
 			}
 			sliceList.add(yString.toString());
 			
