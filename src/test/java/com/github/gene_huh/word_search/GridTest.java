@@ -10,7 +10,7 @@ public class GridTest {
 	@Test
 	public void Grid_Loader_Test() {
 		Grid testGrid = new Grid(filePath);
-		Assert.assertEquals(8, testGrid.loadGrid().size());
+		Assert.assertEquals(8, testGrid.getGrid().size());
 	}
 
 	@Test
