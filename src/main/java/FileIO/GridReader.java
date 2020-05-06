@@ -12,30 +12,34 @@ public class GridReader implements IGridReader {
 
 	private File file;
 	
-	public GridReader(String string) {
-		this.file = string;
+	public GridReader() {
+		this.file = new File("../TestGrid");
 	}
 	
 	@Override
 	public Grid read()  {
 
-		List<String> lines = new ArrayList<String>();
-		int cnt = 0;
+		List<String[]> lines = new ArrayList<String[]>();
+		
+
 		try (Scanner fileScanner = new Scanner(file)) {
 			
 			while (fileScanner.hasNext()) {
 				String nextLine = fileScanner.nextLine();
-				if (cnt > 1) {
-					lines.add(nextLine);
+				if (!nextLine.isEmpty()) {
+					lines.add(lineProcessor(nextLine));
+					
 				}
-				cnt++;
 			}
 			
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
 
-		return new Grid(lines);
+		return new Grid();
 	}
 	
+	private String[] lineProcessor (String str) {
+		return str.split(" ");
+	}
 }

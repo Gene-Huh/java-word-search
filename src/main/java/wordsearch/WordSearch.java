@@ -10,9 +10,9 @@ public class WordSearch {
 	private Scanner in = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		IGridReader reader = new GridReader("TestGrid");
+		IGridReader reader = new GridReader();
 
 	}
 
-	private File getGridFromUser()
+	//private File getGridFromUser()
 }
