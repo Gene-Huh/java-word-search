@@ -32,19 +32,19 @@ public class Grid {
 	}
 
 
-	private void xySlicer() {
-	
+	private List<String> xySlicer() {
+		List<String> result = new ArrayList<>();
 		StringBuilder xString = new StringBuilder();
 		for (int i=0; i<grid.length; i++) {
-			xString.append(grid[i]);
-			
-			StringBuilder yString = new StringBuilder();
+			result.add(grid[i].toString());
 			for (int j=0; i< grid[i].length; j++) {
 				yString.append(grid[i][j]);
 			}
 			sliceList.add(yString.toString());
 			
 		}
-		sliceList.add(xString.toString());
+		
+		
+		return result;
 	}
 }
