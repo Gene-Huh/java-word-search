@@ -6,29 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import wordsearch.Grid;
+import models.Grid;
 
-public class GridReader implements IGridReader {
+public class FileReader implements IFileReader {
 
 	private File file;
 	
-	public GridReader() {
-		this.file = new File("../TestGrid");
+	public FileReader(String filePath) {
+		this.file = new File(filePath);
 	}
 	
 	@Override
-	public Grid read()  {
+	public List<String> read(String filePath)  {
 
-		List<String[]> lines = new ArrayList<String[]>();
-		
-
+		List<String> dataList = new ArrayList<>();
 		try (Scanner fileScanner = new Scanner(file)) {
 			
 			while (fileScanner.hasNext()) {
 				String nextLine = fileScanner.nextLine();
 				if (!nextLine.isEmpty()) {
-					lines.add(lineProcessor(nextLine));
-					
+					dataList.add(nextLine);
 				}
 			}
 			
@@ -36,10 +33,6 @@ public class GridReader implements IGridReader {
 			throw new RuntimeException(e);
 		}
 
-		return new Grid();
-	}
-	
-	private String[] lineProcessor (String str) {
-		return str.split(" ");
+		return dataList;
 	}
 }
