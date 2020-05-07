@@ -17,9 +17,9 @@ public class FileReader implements IFileReader {
 	}
 	
 	@Override
-	public List<String> read(String filePath)  {
+	public ArrayList<String> read()  {
 
-		List<String> dataList = new ArrayList<>();
+		ArrayList<String> dataList = new ArrayList<>();
 		try (Scanner fileScanner = new Scanner(file)) {
 			
 			while (fileScanner.hasNext()) {

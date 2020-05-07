@@ -11,17 +11,18 @@ public class Grid {
 	private ArrayList<String> sliceList;
 
 	public Grid(String filePath) {
-		IFileReader reader = new FileReader(filePath);
-		List<String> gridRaw = reader.read(filePath);
+		FileReader reader = new FileReader(filePath);
+		ArrayList<String> gridRaw = reader.read();
 		
 		grid = new String[gridRaw.size()][gridRaw.size()];
 		for (int i=0;i<grid.length; i++) {
 			grid[i]=gridRaw.get(i).split(" ");
 		}
+		sliceList = new ArrayList<String>();
 	}
 	
-	public List<String> sliceGrid() {
-		xySlicer();
+	public ArrayList<String> sliceGrid() {
+		sliceList.addAll(xySlicer());
 		
 		
 		return sliceList;
@@ -31,19 +32,27 @@ public class Grid {
 		return grid;
 	}
 
-
-	private List<String> xySlicer() {
-		List<String> result = new ArrayList<>();
-		StringBuilder xString = new StringBuilder();
-		for (int i=0; i<grid.length; i++) {
-			result.add(grid[i].toString());
-			for (int j=0; i< grid[i].length; j++) {
-				yString.append(grid[i][j]);
-			}
-			sliceList.add(yString.toString());
-			
+	private ArrayList<String> xySlicer() {
+		ArrayList<String> result = new ArrayList<>();
+		StringBuilder[] yStrings = new StringBuilder[grid.length];
+		for (int i=0; i<yStrings.length; i++) {
+			yStrings[i] = new StringBuilder();
 		}
 		
+		for (int i=0; i<grid.length; i++) {
+			StringBuilder xString = new StringBuilder();
+			for (int j=0; j< grid.length; j++) {
+				yStrings[j].append(grid[i][j]);
+				xString.append(grid[i][j]);
+			} // end of inner loop
+			result.add(xString.toString());
+			result.add(xString.reverse().toString());
+		}  //end of outer loop
+		
+		for (StringBuilder line : yStrings) {
+			result.add(line.toString());
+			result.add(line.reverse().toString());
+		}
 		
 		return result;
 	}

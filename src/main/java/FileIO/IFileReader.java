@@ -1,7 +1,7 @@
 package FileIO;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface IFileReader {
-	List<String> read(String filePath);
+	ArrayList<String> read();
 }

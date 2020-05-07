@@ -9,8 +9,8 @@ public class WordList {
 	private List<String> wordList;
 
 	public WordList(String filePath) {
-		IFileReader reader = new FileReader(filePath);
-		wordList = reader.read(filePath);
+		FileReader reader = new FileReader(filePath);
+		wordList = reader.read();
 	}
 	
 	public List<String> getWordList() {
