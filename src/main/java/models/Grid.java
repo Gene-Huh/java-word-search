@@ -22,8 +22,8 @@ public class Grid {
 	}
 	
 	public ArrayList<String> sliceGrid() {
-		sliceList.addAll(xySlicer());
-		
+		//sliceList.addAll(xySlicer());
+		sliceList.addAll(diagonalSlicer());
 		
 		return sliceList;
 	}
@@ -55,5 +55,19 @@ public class Grid {
 		}
 		
 		return result;
+	}
+	
+	private ArrayList<String> diagonalSlicer() {
+		
+		for( int k = 0 ; k < grid.length * 2 ; k++ ) {
+	        for( int j = 0 ; j <= k ; j++ ) {
+	            int i = k - j;
+	            if( i < grid.length && j < grid.length ) {
+	                System.out.print( grid[i][j] + " " );
+	            }
+	        } System.out.println();
+		}
+		
+		return new ArrayList<String>();
 	}
 }

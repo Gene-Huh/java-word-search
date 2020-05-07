@@ -15,7 +15,6 @@ public class WordSearch {
 		Grid gridTester = new Grid("TestGrid");
 		gridTester.getGrid();
 		
-		@SuppressWarnings("unused")
 		ArrayList<String> testSlicer = gridTester.sliceGrid();
 	}
 
